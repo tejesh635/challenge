@@ -1,0 +1,173 @@
+# challenge
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transportation Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #2b3e50;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #fff;
+    }
+
+    .sidebar h2 {
+      margin-top: 0;
+      color: #4fc3f7;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ccc;
+      padding: 10px 0;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 20px;
+    }
+
+    .topbar {
+      background-color: #ffffff;
+      padding: 15px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .metrics {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .metric {
+      flex: 1 1 200px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-left: 5px solid #4fc3f7;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .metric h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #2b3e50;
+    }
+
+    .metric p {
+      font-size: 24px;
+      margin: 0;
+      font-weight: bold;
+      color: #4fc3f7;
+    }
+
+    .map-section {
+      margin-top: 30px;
+      background-color: #e0e0e0;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 20px;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        margin-left: 0;
+      }
+
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>LogiTrack</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Fleet</a>
+    <a href="#">Deliveries</a>
+    <a href="#">Fuel Usage</a>
+    <a href="#">Settings</a>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <h1>Transportation Dashboard</h1>
+      <span>Status: <strong style="color:green">Operational</strong></span>
+    </div>
+
+    <div class="metrics">
+      <div class="metric">
+        <h3>Active Vehicles</h3>
+        <p id="vehicles">--</p>
+      </div>
+      <div class="metric">
+        <h3>Deliveries Today</h3>
+        <p id="deliveries">--</p>
+      </div>
+      <div class="metric">
+        <h3>Total Distance</h3>
+        <p id="distance">-- km</p>
+      </div>
+      <div class="metric">
+        <h3>Fuel Consumed</h3>
+        <p id="fuel">-- L</p>
+      </div>
+    </div>
+
+    <div class="map-section">
+      [Map View Placeholder — You can embed Google Maps or Leaflet here]
+    </div>
+  </div>
+
+  <script>
+    function getRandom(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    function updateMetrics() {
+      document.getElementById('vehicles').textContent = getRandom(45, 60);
+      document.getElementById('deliveries').textContent = getRandom(80, 120);
+      document.getElementById('distance').textContent = getRandom(5000, 9000) + ' km';
+      document.getElementById('fuel').textContent = getRandom(800, 1500) + ' L';
+    }
+
+    updateMetrics();
+    setInterval(updateMetrics, 3000); // Update every 3s
+  </script>
+</body>
+</html>
